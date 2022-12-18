@@ -29,6 +29,7 @@ public class GameLogic : MonoBehaviour
 
         Balloon balloon = new Balloon(screenPositionXPercent,screenPositionYPercent,nextID++);
         balloons.Add(balloon);
+        UpdateAllClients();
     }
 
     public void UpdateClient(int clientConnectionID)
@@ -38,6 +39,16 @@ public class GameLogic : MonoBehaviour
         foreach (Balloon balloon in balloons)
         {
             yes += balloon + ";";
+        }
+
+        NetworkedServerProcessing.SendMessageToClient($"{ServerToClientSignifiers.Refresh},{yes}",clientConnectionID);
+    }
+
+    public void UpdateAllClients()
+    {
+        foreach  (int id in NetworkedServerProcessing.ClientID)
+        {
+            UpdateClient(id);
         }
     }
 }
