@@ -47,7 +47,7 @@ public class GameLogic : MonoBehaviour
             yes += balloon + ";";
         }
 
-        NetworkedServerProcessing.SendMessageToClient($"{ServerToClientSignifiers.Refresh},{yes}",clientConnectionID);
+        NetworkedServerProcessing.SendMessageToClient($"{ServerToClientSignifiers.Refresh:D},{yes}",clientConnectionID);
     }
 
     public void UpdateAllClients()
