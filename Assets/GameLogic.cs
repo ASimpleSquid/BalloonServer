@@ -24,3 +24,19 @@ public class GameLogic : MonoBehaviour
     }
 
 }
+
+public struct Balloon
+{
+    public float x;
+    public float y;
+    public int id;
+
+    public Balloon(float x, float y, int id)
+    {
+        this.x = x;
+        this.y = y;
+        this.id = id;
+
+    }
+    public override string ToString() => $"{x},{y},{id}";
+}
