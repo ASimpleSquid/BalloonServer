@@ -5,6 +5,8 @@ using UnityEngine;
 static public class NetworkedServerProcessing
 {
 
+    public static List<int> ClientID = new List<int>();
+
     #region Send and Receive Data Functions
     static public void ReceivedMessageFromClient(string msg, int clientConnectionID)
     {
@@ -36,10 +38,13 @@ static public class NetworkedServerProcessing
     static public void ConnectionEvent(int clientConnectionID)
     {
         Debug.Log("New Connection, ID == " + clientConnectionID);
+        ClientID.Add(clientConnectionID);
+        gameLogic.UpdateClient(clientConnectionID);
     }
     static public void DisconnectionEvent(int clientConnectionID)
     {
         Debug.Log("New Disconnection, ID == " + clientConnectionID);
+        ClientID.RemoveAll(cid => cid == clientConnectionID);
     }
 
     #endregion

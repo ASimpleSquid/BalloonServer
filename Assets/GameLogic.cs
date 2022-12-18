@@ -31,6 +31,15 @@ public class GameLogic : MonoBehaviour
         balloons.Add(balloon);
     }
 
+    public void UpdateClient(int clientConnectionID)
+    {
+        string yes = "";
+
+        foreach (Balloon balloon in balloons)
+        {
+            yes += balloon + ";";
+        }
+    }
 }
 
 public struct Balloon
@@ -46,5 +55,5 @@ public struct Balloon
         this.id = id;
 
     }
-    public override string ToString() => $"{x},{y},{id}";
+    public override string ToString() => $"{x}_{y}_{id}";
 }
