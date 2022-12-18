@@ -20,7 +20,12 @@ public class GameLogic : MonoBehaviour
         if (durationUntilNextBalloon < 0)
         {
             durationUntilNextBalloon = 1f;
+            if (balloons.Count < 10)
+            {
+                SpawnNewBalloon();
+            }
         }
+        
     }
 
     public void SpawnNewBalloon()
@@ -47,7 +52,10 @@ public class GameLogic : MonoBehaviour
             yes += balloon + ";";
         }
 
-        NetworkedServerProcessing.SendMessageToClient($"{ServerToClientSignifiers.Refresh:D},{yes}",clientConnectionID);
+        string msg = $"{ServerToClientSignifiers.Refresh:D},{yes}";
+
+        NetworkedServerProcessing.SendMessageToClient(msg,clientConnectionID);
+        Debug.Log(msg);
     }
 
     public void UpdateAllClients()
@@ -72,5 +80,5 @@ public struct Balloon
         this.id = id;
 
     }
-    public override string ToString() => $"{x}_{y}_{id}";
+    public override string ToString() => $"{x:F2}_{y:F2}_{id}";
 }
