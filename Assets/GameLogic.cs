@@ -9,6 +9,7 @@ public class GameLogic : MonoBehaviour
     public int nextID = 0;
     void Start()
     {
+        balloons = new List<Balloon>();
         NetworkedServerProcessing.SetGameLogic(this);
     }
 
