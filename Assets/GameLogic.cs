@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     float durationUntilNextBalloon;
+    public List<Balloon> balloons;
+    public int nextID = 0;
     void Start()
     {
         NetworkedServerProcessing.SetGameLogic(this);
@@ -17,10 +19,15 @@ public class GameLogic : MonoBehaviour
         if (durationUntilNextBalloon < 0)
         {
             durationUntilNextBalloon = 1f;
-
-            float screenPositionXPercent = Random.Range(0.0f, 1.0f);
-            float screenPositionYPercent = Random.Range(0.0f, 1.0f);
         }
+    }
+
+    public void SpawnNewBalloon()
+    {
+        float screenPositionXPercent = Random.Range(0.0f, 1.0f);
+        float screenPositionYPercent = Random.Range(0.0f, 1.0f);
+
+        Balloon balloon = new Balloon(screenPositionXPercent,screenPositionYPercent,nextID++);
     }
 
 }
