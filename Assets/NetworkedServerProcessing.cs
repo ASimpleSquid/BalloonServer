@@ -13,16 +13,16 @@ static public class NetworkedServerProcessing
         string[] csv = msg.Split(',');
         int signifier = int.Parse(csv[0]);
 
-        if (signifier == ClientToServerSignifiers.asd)
+        switch ((ClientToServerSignifiers)signifier)
         {
+            case ClientToServerSignifiers.Pop:
+                break;
+
+            default:
+
+                break;
 
         }
-        // else if (signifier == ClientToServerSignifiers.asd)
-        // {
-
-        // }
-
-        //gameLogic.DoSomething();
     }
     static public void SendMessageToClient(string msg, int clientConnectionID)
     {
@@ -65,15 +65,14 @@ static public class NetworkedServerProcessing
 }
 
 #region Protocol Signifiers
-static public class ClientToServerSignifiers
+public enum ClientToServerSignifiers
 {
-    public const int asd = 1;
+    Pop
 }
 
-static public class ServerToClientSignifiers
+public enum ServerToClientSignifiers
 {
-    public const int asd = 1;
+    Refresh
 }
-
 #endregion
 

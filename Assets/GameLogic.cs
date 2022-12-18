@@ -28,6 +28,7 @@ public class GameLogic : MonoBehaviour
         float screenPositionYPercent = Random.Range(0.0f, 1.0f);
 
         Balloon balloon = new Balloon(screenPositionXPercent,screenPositionYPercent,nextID++);
+        balloons.Add(balloon);
     }
 
 }
