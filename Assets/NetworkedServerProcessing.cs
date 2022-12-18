@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ static public class NetworkedServerProcessing
         switch ((ClientToServerSignifiers)signifier)
         {
             case ClientToServerSignifiers.Pop:
+                gameLogic.DestroyBalloon(Int32.Parse(csv[1]));
                 break;
 
             default:

@@ -32,6 +32,11 @@ public class GameLogic : MonoBehaviour
         UpdateAllClients();
     }
 
+    public void DestroyBalloon(int id)
+    {
+        balloons.RemoveAll(balloon => balloon.id == id);
+    }
+
     public void UpdateClient(int clientConnectionID)
     {
         string yes = "";
