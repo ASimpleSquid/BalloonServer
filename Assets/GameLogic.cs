@@ -19,8 +19,8 @@ public class GameLogic : MonoBehaviour
 
         if (durationUntilNextBalloon < 0)
         {
-            durationUntilNextBalloon = 1f;
-            if (balloons.Count < 10)
+            durationUntilNextBalloon = 3f;
+            if (balloons.Count < 20)
             {
                 SpawnNewBalloon();
             }
@@ -41,6 +41,7 @@ public class GameLogic : MonoBehaviour
     public void DestroyBalloon(int id)
     {
         balloons.RemoveAll(balloon => balloon.id == id);
+        UpdateAllClients();
     }
 
     public void UpdateClient(int clientConnectionID)
@@ -80,5 +81,5 @@ public struct Balloon
         this.id = id;
 
     }
-    public override string ToString() => $"{x:F2}_{y:F2}_{id}";
+    public override string ToString() => $"{x:F3}_{y:F3}_{id}";
 }
